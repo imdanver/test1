@@ -3,10 +3,10 @@
     <div class="content">
       <div class="header">
         <div @click="form = true" class="add">Добавить новый комментарий</div>
-        <div @click="sortDefault" class="all">Все комментарии</div>
-        <div @click="sortBy('name')" class="sort-by-name">Сортировать по имени</div>
-        <div @click="sortBy('email')" class="sort-by-email">Сортировать по email</div>
-        <div @click="sortBy('ts')" class="sort-by-date">Сортировать по дате</div>
+        <div v-if="comments.length" @click="sortDefault" class="all">Все комментарии</div>
+        <div v-if="comments.length" @click="sortBy('name')" class="sort-by-name">Сортировать по имени</div>
+        <div v-if="comments.length" @click="sortBy('email')" class="sort-by-email">Сортировать по email</div>
+        <div v-if="comments.length" @click="sortBy('ts')" class="sort-by-date">Сортировать по дате</div>
       </div>
       <div class="messages">
         <app-comment v-for="item in page" :message="item" @form-on="formOn"></app-comment>
