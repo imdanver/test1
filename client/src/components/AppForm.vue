@@ -106,6 +106,7 @@
                             reader.addEventListener('load', e => {
                                 const uid = `user${Date.now()}`, txt = e.target.result, ext = ''
                                 this.send(uid, txt, ext)
+                                this.toDefault()
                             })
                             reader.readAsText(this.file)
                         }
@@ -114,19 +115,21 @@
                             this.send(uid, txt, ext)
                             const formData = new FormData()
                             formData.append('file', this.file, `${uid}.${ext}`)
+                            console.log(`${window.location.protocol}//${window.location.hostname}:${process.env.VUE_APP_SERVER_PORT}/ajax`)
                             await axios.post(`${window.location.protocol}//${window.location.hostname}:${process.env.VUE_APP_SERVER_PORT}/ajax`,
                                 formData, {headers: {'Content-Type': 'multipart/form-data'}})
+                            this.$emit('form-off')
                         }
                     }
                     else {
                         const uid = `user${Date.now()}`, txt = '', ext = ''
                         this.send(uid, txt, ext)
+                        this.toDefault()
                     }
-
-                    this.toDefault()
                 }
             },
             send(uid, txt, ext) {
+
                 const obj = {
                     uid,
                     parent: this.parent,
@@ -139,6 +142,7 @@
                     ext,
                     ts: Date.now(),
                 }
+                // console.log(obj)
                 this.ws.send(JSON.stringify(obj))
             },
             toDefault() {
