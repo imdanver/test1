@@ -73,6 +73,15 @@
         padding: 5px;
     }
 
+    .name {
+        color: #0D6C4D;
+        margin-right: 20px;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
     .attachment-bg {
         display: flex;
         justify-content: center;
