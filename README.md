@@ -1,24 +1,84 @@
-# test-dzen-code
+# Тестовое задание
+Блок добавления комментариев для сайта
+## Установка проекта в Ubuntu 20.04
+#### Установка и настройка базы даных mysql
+Установка mysql-сервера
+```
+apt install mysql-server
+```
+Запуск mysql
+```
+mysql
+```
+Создание пароля для пользователя root
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY <пароль_базы_даных>';
+```
+Создание базы данных
+```
+CREATE SCHEMA `dzencode` DEFAULT CHARACTER SET utf8mb4;
+```
+```
+exit
+```
+Установка входа в базу данных по паролю
+```
+mysql -u root -p
+```
+```
+exit
+```
+#### Установка и настройка node  js
+Установка curl
+```
+apt install curl
+```
+Установка системы контроля версий nvm
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+```
+```
+source ~/.bashrc
+```
+Выбор необходимой версии nodejs  
+```
+nvm list-remote
+```
+Установка необходимой версии nodejs  
+```
+nvm install v<версия_nodejs>
+```
+Создание папки проекта в папке root на сервере   
+```
+mkdir dzencode
+```
+Скопировать файлы проекта в папку dzencode на сервере
 
-## Project setup
+Перейти в папку проекта   
 ```
-npm install
+cd dzencode
+```
+Установить зависимости проекта  
+```
+npm i
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+В файле проекта .env.production указать ваш хост
 
-### Compiles and minifies for production
+В файле проекта model.js указать пароль базы данных
+
+Оптимизация клиентской части проекта
 ```
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Запустить проект  
+```
+npm start
+```
+Проект будет доступен по адресу: <ваш_хост>:3000
+
+
+
+
