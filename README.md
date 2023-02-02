@@ -21,13 +21,6 @@ CREATE SCHEMA `dzencode` DEFAULT CHARACTER SET utf8mb4;
 ```
 exit
 ```
-Установка входа в базу данных по паролю
-```
-mysql -u root -p
-```
-```
-exit
-```
 #### Установка и настройка node  js
 Установка curl
 ```
